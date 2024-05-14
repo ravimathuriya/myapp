@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar.js";
 import TextForm from "./components/TextForm.js";
 import Darkmode from "./components/Darkmode.js";
 import Alert from "./components/Alert.js";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [mode, setmode] = useState("light");
@@ -40,29 +40,46 @@ function App() {
 
   return (
     <>
-  <Router>
-      <Navbar
-        title="MyApp"
-        about="Darkmode"
-        home="Home"
-        mode={mode}
-        toggle={togglemode}
-      />
-      <Alert alert={alert} />
+      <Router>
+        <Navbar
+          title="MyApp"
+          about="Darkmode"
+          home="Home"
+          mode={mode}
+          toggle={togglemode}
+        />
+
+        <Alert alert={alert} />
+
         <Routes>
-              <Route exact path="/home" element={ <div className="container">
-                          <TextForm
-                            alertmode={alertmode}
-                            heading="Enter your text to analyze"
-                            mode={mode}/>
-                        </div>}  >
-                       
-              </Route>
-          <Route exact path="/darkmode" element={<Darkmode mode={mode}/>} >
-            
-          </Route>
+        <Route exact path="" element={<div className="container">
+                <TextForm
+                  alertmode={alertmode}
+                  heading="Enter your text to analyze"
+                  mode={mode}
+                />
+              </div>} ></Route>
+
+          <Route
+            exact
+            path="/home"
+            element={
+              <div className="container">
+                <TextForm
+                  alertmode={alertmode}
+                  heading="Enter your text to analyze"
+                  mode={mode}
+                />
+              </div>
+            }
+          ></Route>
+          <Route
+            exact
+            path="/darkmode"
+            element={<Darkmode mode={mode} />}
+          ></Route>
         </Routes>
-    </Router>
+      </Router>
     </>
   );
 }
