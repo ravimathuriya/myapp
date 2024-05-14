@@ -52,7 +52,7 @@ function App() {
         <Alert alert={alert} />
 
         <Routes>
-        <Route exact path="" element={<div className="container">
+        <Route exact path="/" element={<div className="container">
                 <TextForm
                   alertmode={alertmode}
                   heading="Enter your text to analyze"

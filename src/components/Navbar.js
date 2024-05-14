@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
+
+
 export default function Navbar(props) {
   return (
     <>
@@ -10,7 +12,7 @@ export default function Navbar(props) {
         data-bs-theme={props.mode}
       >
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/home">
+          <Link className="navbar-brand" to="#">
             {props.title}
           </Link>
           <button
@@ -55,6 +57,8 @@ export default function Navbar(props) {
           </div>
         </div>
       </nav>
+
+      
     </>
   );
 }
