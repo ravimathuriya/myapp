@@ -37,13 +37,15 @@ export default function TextForm(props) {
   };
 
   const wordcount = () => {
-    let wordcount = text.split(" ").length;
+    let wordcount = text.split(" ").filter((element)=>{return element.length !== 0}).length;
 
-    if (text === "") {
-      return (wordcount = 0);
-    } else {
-      return wordcount - 1;
-    }
+    return wordcount;
+
+    // if (text === "") {
+    //   return (wordcount = 0);
+    // } else {
+    //   return wordcount - 1;
+    // }
   };
 
   const characterscount = () => {
@@ -66,30 +68,34 @@ export default function TextForm(props) {
           ></textarea>
         </div>
         <button
-          className="btn btn-primary mx-2"
+          className="btn btn-primary mx-2 my-2"
           onClick={onupper}
           style={newstyle}
+          disabled= {text.length===0}
         >
           Convert to Uppercase
         </button>
         <button
-          className="btn btn-secondary mx-2"
+          className="btn btn-secondary mx-2 my-2"
           onClick={onlower}
           style={newstyle}
+          disabled= {text.length===0}
         >
           Convert to Lowercase
         </button>
         <button
-          className="btn btn-primary mx-2"
+          className="btn btn-primary mx-2 my-2"
           onClick={convertItalic}
           style={newstyle}
+          disabled= {text.length===0}
         >
           Convert to Italic
         </button>
         <button
-          className="btn btn-primary mx-2"
+          className="btn btn-primary mx-2 my-2"
           onClick={clear}
           style={newstyle}
+          disabled= {text.length===0}
         >
           Clear Text
         </button>
@@ -101,11 +107,11 @@ export default function TextForm(props) {
           your text has <strong>{wordcount()}</strong> words and{" "}
           <strong> {characterscount()} </strong> characters and you can be learn
           in
-          <strong> {text.split(" ").length * 0.032} </strong> minutes.
+          <strong> {text.split(" ").filter((element)=>{return element.length !== 0}).length * 0.032} </strong> minutes.
         </p>
       </div>
       <h2>Preview</h2>
-      <p>{text.length > 0 ? text : "Please type some text for preview"}</p>
+      <p>{text.length > 0 ? text : "Nothing to preview"}</p>
     </>
   );
 }
