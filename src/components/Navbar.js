@@ -54,6 +54,7 @@ export default function Navbar(props) {
                 {props.mode === "light" ? "Dark Mode" : "Light Mode"}
               </label>
             </div>
+            
           </div>
         </div>
       </nav>
